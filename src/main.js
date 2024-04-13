@@ -1,13 +1,16 @@
 import "@/styles/common.scss";
 import { createApp } from "vue";
+import { createPinia } from "pinia";
+import { lazyPlugin } from "@/directives";
 import App from "./App.vue";
 import router from "./router";
-import { getCategoryAPI } from "@/apis/testApi";
+import { componentPlugin } from "@/components";
 
 const app = createApp(App);
+const pinia = createPinia();
 
+app.use(lazyPlugin);
 app.use(router);
-getCategoryAPI().then((res) => {
-  console.log(res);
-});
+app.use(pinia);
+app.use(componentPlugin);
 app.mount("#app");

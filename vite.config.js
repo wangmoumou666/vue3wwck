@@ -1,5 +1,4 @@
 import { fileURLToPath, URL } from "node:url";
-
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 // 引入插件
@@ -18,6 +17,7 @@ export default defineConfig({
     // 配置插件
     AutoImport({
       imports: ["vue", "vue-router", "pinia"],
+      dts: "src/auto-import.d.ts",
       resolvers: [ElementPlusResolver()],
     }),
     Components({
